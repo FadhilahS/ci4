@@ -56,6 +56,11 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
+                <a class="nav-link" href="/course">
+                    <i class="fas fa-user-edit"></i>
+                    <span>Course</span></a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="charts.html">
                     <i class=" fas fa-user"> </i>
                     <span>Profile</span></a>
@@ -147,5 +152,6 @@
     <script src="<?= base_url(); ?>/js/sb-admin-2.min.js"></script>
 
 </body>
+
 
 </html>

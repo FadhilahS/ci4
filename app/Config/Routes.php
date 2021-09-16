@@ -35,6 +35,16 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'User::index');
+$routes->get('/course', 'course::index');
+$routes->get('/course/create', 'course::create');
+$routes->get('/assign/(:any)', 'course::detail/$1');
+$routes->get('/course/edit/(:segment)', 'course::edit/$1');
+$routes->delete('/course/(:num)', 'course::delete/$1');
+$routes->get('/assignment/create', 'assignment::create');
+$routes->get('/assignment/list', 'assignment::list');
+$routes->get('/task/edit/(:segment)/(:num)/(:num)', 'assignment::edit/$1/$2/$3');
+$routes->delete('/list/(:num)', 'assignment::delete/$1');
+$routes->get('/task/(:any)/(:num)/(:num)', 'assignment::assign/$1/$2/$3');
 $routes->get('/Comics/create', 'Comics::create');
 $routes->get('/Comics/edit/(:segment)', 'Comics::edit/$1');
 $routes->delete('/Comics/(:num)', 'Comics::delete/$1');

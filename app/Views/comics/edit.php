@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-8">
-            <h2 class="my-3">Form edit Comics</h2>
+            <h2 class="my-3">Assigments</h2>
 
             <form action="/Comics/update" <?= $Comics['id']; ?> method="POST" enctype="multipart/form-data">
                 <?= csrf_field(); ?>

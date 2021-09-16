@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.detail::selection {
+  background-color: orange;
+  color: #fff;
+}
+.c-assign input {
+  caret-color: aqua;
+}
+
+.submision-container {
+  position: relative;
+  width: 100%;
+  /* border: 1px solid black; */
+  padding: 0.5em 0;
+}
+.submision-container .s-item {
+  width: 100%;
+  /* border: 1px solid red; */
+  display: grid;
+  grid-template-columns: 0.2fr 1fr;
+  margin-bottom: 0.3em;
+}
+.submision-container .s-item .d-status {
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+  background: rgba(236, 236, 236, 0.8);
+  color: rgb(221, 66, 66);
+  /* border: 1px solid orange; */
+}
+.submision-container .s-item .d-desc {
+  font-weight: 400;
+  color: #000;
+
+  background: rgba(255, 255, 255, 0.8);
+  /* border: 1px solid orange; */
+}
+a.submit,
+a.edit {
+  color: inherit;
+  text-decoration: none;
+}
+.input-file {
+  width: 100%;
+  margin: 1.5em 0;
+  position: relative;
+}
+.submision-status {
+  font-size: 1.3em;
+}
+.button-sub,
+.button-edit {
+  margin-bottom: 2em;
+}
+.submision-container .s-item .d-status p {
+  margin: auto;
+}
+
+.submision-container .s-item .d-desc p {
+  margin-top: 1em;
+  margin-left: 1em;
+}
+
+@media screen and (max-width: 600px) {
+  .submision-container .s-item {
+    width: 100%;
+    /* border: 1px solid red;
+     */
+    display: grid;
+    grid-template-columns: 0.6fr 1fr;
+    gap: 0 0.5em;
+  }
+  .submision-container .s-item .d-desc p {
+    margin-top: 1em;
+    margin-left: 0.5em;
+    /* border: 1px solid orange; */
+  }
+}

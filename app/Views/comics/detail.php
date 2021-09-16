@@ -3,7 +3,8 @@
 
 
 <div class="container">
-    <h1>Detail Comic</h1>
+    <h1>Assignment</h1>
+    <a href="/Comics/create" class="btn btn-info mb-2 mt-4 text-white">Add Assigment</a>
     <div class="row">
         <div class="col">
             <div class="card mb-3" style="max-width: 540px;">
@@ -23,9 +24,6 @@
                                 <input type="hidden" name="_method" value="DELETE">
                                 <button type="submit" class="btn btn-danger" onclick="return confirm('apakah anda yakin?');">Delete</button>
                             </form>
-                            <br><br>
-                            <hr>
-                            <a href="/Comics">Back</a>
                         </div>
                     </div>
                 </div>

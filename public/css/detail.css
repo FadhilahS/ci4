@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* code bagian jumbotron */
+.jumbotron {
+  padding: 0.5em 0;
+  border-radius: 5px;
+  /* height: 260px; */
+
+  /* background: rgb(244, 254, 255); */
+  position: relative;
+}
+
+/* code bagian grid  item di dalam row */
+.g-item {
+  padding: 0.5em;
+  position: relative;
+  /* border: 1px solid white; */
+}
+
+.g-item h2,
+p {
+  color: #ffffff;
+}
+
+/*akhir code bagian grid  item di dalam row */
+
+/* code bagian paragraph due-date */
+
+.jumbotron .due-date {
+  margin-top: -0.5em;
+}
+
+/* code bagian paragraph due-date */
+
+/* code bagian acordion atau list */
+.accordion .card {
+  border: none;
+}
+
+.accordion .card-header {
+  padding: 0.5em;
+}
+.accordion .btn-block {
+  color: #ffffff;
+  text-decoration: none;
+}
+.accordion .card .card-body p {
+  color: #2b2b2b;
+}
+.card-body {
+  padding: 0.9em;
+}
+
+/*akhir code bagian acordion atau list */
+
+/* code bagian grid item img */
+
+.g-item .card {
+  position: relative;
+  border: none;
+
+  border-radius: 2px;
+}
+.g-item-img .card img {
+  object-fit: cover;
+}
+.g-item-img .card {
+  width: 18rem;
+}
+.g-item-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* akhir code bagian grid item img */
+
+/*akhir code bagian jumbotron */
+
+@media screen and (max-width: 760px) {
+  .g-item-img .card {
+    position: relative;
+    border: none;
+    width: 19rem;
+    border-radius: 2px;
+  }
+}

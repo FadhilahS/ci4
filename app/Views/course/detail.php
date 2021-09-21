@@ -175,7 +175,7 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800 text-capitalize detail"><?= $title; ?></h1>
 
-                        <a href="/list/<?= $Course['id']; ?>/assignment" class="btn btn-warning">List</a>
+
 
                     </div>
                     <!-- jumbotron heading -->
@@ -208,7 +208,8 @@
 
                                 </div>
                             </div>
-                            <a href="/course/edit/<?= $Course['slug']; ?>" class="btn btn-success">Edit</a>
+                            <a href="/assignment/list" class="btn btn-warning">List</a>
+                            <a href="/course/edit/<?= $Course['id']; ?>" class="btn btn-success">Edit</a>
                             <form action="/course/<?= $Course['id']; ?>" method="POST" class="d-inline">
                                 <?= csrf_field(); ?>
                                 <input type="hidden" name="_method" value="DELETE">
@@ -221,7 +222,8 @@
 
                 </div>
                 <!-- /.container-fluid -->
-
+                <hr>
+                <!-- Content Row list courses card -->
 
                 <!-- akhir code jumbotron -->
             </div>

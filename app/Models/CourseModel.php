@@ -8,14 +8,14 @@ class CourseModel extends Model
 {
     protected $table = 'Course';
     protected $useTimeStamps = 'true';
-    protected $allowedFields = ['course_name', 'slug', 'trainer_name', 'description', 'sampul'];
+    protected $allowedFields = ['course_name', 'trainer_name', 'description', 'sampul'];
 
-    public function getCourse($slug = false)
+    public function getCourse($id = false)
     {
-        if ($slug == false) {
+        if ($id == false) {
             return $this->findAll();
         } else {
-            return $this->where(['slug' => $slug])->first();
+            return $this->where(['id' => $id])->first();
         }
     }
 }

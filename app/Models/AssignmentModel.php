@@ -7,15 +7,16 @@ use CodeIgniter\Model;
 class AssignmentModel extends Model
 {
     protected $table = 'Assignment';
+    protected $primaryKey = 'assignment_id';
     protected $useTimeStamps = 'true';
-    protected $allowedFields = ['assignment_id', 'task_name', 'slug', 'description', 'id', 'point', 'due_date'];
+    protected $allowedFields = ['task_name', 'description', 'id', 'point', 'due_date', 'task'];
 
-    public function getAssignment($slug = false)
+    public function getAssignment($assignment_id = false)
     {
-        if ($slug == false) {
+        if ($assignment_id == false) {
             return $this->findAll();
         } else {
-            return $this->where(['slug' => $slug])->first();
+            return $this->where(['assignment_id' => $assignment_id])->first();
         }
     }
 }

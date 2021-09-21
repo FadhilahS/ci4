@@ -177,11 +177,11 @@
                         List Courses
                     </h2>
 
-                    <a href="/course/create">
-                        <button class="btn btn-success text-capitalize mb-2">Add Course</button>
-                    </a>
                     <!-- Content Row list courses card -->
                     <div class="container c-fluid">
+                        <a href="/course/create">
+                            <button class="btn btn-success text-capitalize mb-2">Add Course</button>
+                        </a>
                         <div class="row">
                             <?php foreach ($Course as $c) : ?>
                                 <div class="col-md-3">
@@ -196,7 +196,7 @@
                                             <p><?= $c['trainer_name']; ?></p>
                                             <hr>
                                             <p><?= $c['description']; ?></p>
-                                            <a href="/assign/<?= $c['slug']; ?>">
+                                            <a href="/assign/<?= $c['id']; ?>">
                                                 <button class="btn btn-success text-capitalize mb-2">detail</button>
                                             </a>
                                         </div>

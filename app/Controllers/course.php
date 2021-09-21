@@ -40,17 +40,18 @@ class course extends BaseController
         return view('course/index', $data);
     }
 
-    public function detail($slug)
+    public function detail($id)
     {
         $data = [
-            'title' => 'Detail Assignment',
-            'Course' => $this->CourseModel->getCourse($slug)
+            'title' => 'Detail Course',
+            'Course' => $this->CourseModel->getCourse($id)
+
         ];
 
         //jika komik tidak ada
 
         if (empty($data['Course'])) {
-            throw new \codeIgniter\Exceptions\PageNotFoundException('course_name Course' . $slug . 'Tidak ditemukan');
+            throw new \codeIgniter\Exceptions\PageNotFoundException('course_name Course' . $id . 'Tidak ditemukan');
         }
 
         return view('course/detail', $data);
@@ -119,11 +120,8 @@ class course extends BaseController
 
 
 
-
-        $slug =  url_title($this->request->getVar('course_name'), '-', true);
         $this->CourseModel->save([
             'course_name' => $this->request->getVar('course_name'),
-            'slug' => $slug,
             'trainer_name' => $this->request->getVar('trainer_name'),
             'description' => $this->request->getVar('description'),
             'sampul' => $namaSampul
@@ -155,12 +153,12 @@ class course extends BaseController
     }
 
 
-    public function edit($slug)
+    public function edit($id)
     {
         $data = [
             'title' => 'Edit Course',
             'validation' => \Config\Services::validation(),
-            'Course' => $this->CourseModel->getCourse($slug)
+            'Course' => $this->CourseModel->getCourse($id)
 
         ];
 
@@ -171,7 +169,7 @@ class course extends BaseController
     {
         // cek judul
 
-        $courseLama = $this->CourseModel->getCourse($this->request->getVar('slug'));
+        $courseLama = $this->CourseModel->getCourse($this->request->getVar('id'));
         if ($courseLama['course_name'] == $this->request->getVar('course_name')) {
             $rule_name = 'required';
         } else {
@@ -197,13 +195,12 @@ class course extends BaseController
 
         ])) {
             $validation = \Config\Services::validation();
-            return redirect()->to('/course/edit/' . $this->request->getVar('slug'))->withInput()->with('validation', $validation);
+            return redirect()->to('/course/edit/' . $this->request->getVar('id'))->withInput()->with('validation', $validation);
         }
-        $slug =  url_title($this->request->getVar('course_name'), '-', true);
+
         $this->CourseModel->save([
             'id' => $id,
             'course_name' => $this->request->getVar('course_name'),
-            'slug' => $slug,
             'trainer_name' => $this->request->getVar('trainer_name'),
             'description' => $this->request->getVar('description'),
             'sampul' => $this->request->getVar('sampul')

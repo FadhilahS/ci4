@@ -166,16 +166,16 @@
                         <h1 class="h3 mb-0 text-gray-800  detail text-capitalize"><?= $title; ?></h1>
                     </div>
 
-                    <form action="/assignment/update/<?= $Assignment['slug']; ?>" method="POST" enctype="multipart/form-data">
+                    <form action="/assignment/update/<?= $Assignment['assignment_id']; ?>" method="POST" enctype="multipart/form-data">
                         <?= csrf_field(); ?>
-                        <input type="hidden" name="slug" value="<?= $Assignment['slug']; ?>">
                         <input type="hidden" name="assignment_id" value="<?= $Assignment['assignment_id']; ?>">
+                        <input type="hidden" name="$taskLama" value="<?= $Assignment['task_name']; ?>">
                         <div class="row text-capitalize row-input">
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="task_name" class="form-label  ">Task Name</label>
                                     <input type="text" class="form-control <?= ($validation->hasError('task_name')) ?
-                                                                                'is-invalid' : ''; ?>" id="task_name" name="task_name" autofocus value="<?= old('task_name'); ?>">
+                                                                                'is-invalid' : ''; ?>" id="task_name" name="task_name" autofocus value="<?= (old('task_name')) ? old('task_name') : $Assignment['task_name'] ?>">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('task_name'); ?>
                                     </div>
@@ -184,25 +184,25 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="point" class="form-label  ">Course id</label>
-                                    <input type="text" class="form-control" id="id" name="id" value="<?= old('id'); ?>">
+                                    <input type="text" class="form-control" id="id" name="id" value="<?= (old('id')) ? old('id') : $Assignment['id'] ?>">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="description" class="form-label">description</label>
-                                    <textarea class="form-control" id="description" name="description" rows="3" value="<?= old('description'); ?>"></textarea>
+                                    <textarea class="form-control" id="description" name="description" rows="3" value="<?= (old('description')) ? old('description') : $Assignment['description'] ?>"></textarea>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="point" class="form-label  ">Point</label>
-                                    <input type="text" class="form-control" id="point" name="point" value="<?= old('point'); ?>">
+                                    <input type="text" class="form-control" id="point" name="point" value="<?= (old('point')) ? old('point') : $Assignment['point'] ?>">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="due_date" class="form-label  ">Due Date</label>
-                                    <input type="text" class="form-control" id="due_date" name="due_date" value="<?= old('due_date'); ?>">
+                                    <input type="date" class="form-control" id="due_date" name="due_date" value="<?= (old('due_date')) ? old('due_date') : $Assignment['due_date'] ?>">
                                 </div>
                             </div>
                         </div>

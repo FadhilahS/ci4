@@ -175,9 +175,9 @@
                     </h2>
                     <!-- Content Row list courses card -->
                     <div class="container c-fluid">
+                        <a href="/assignment/create" class="btn btn-info mb-2">Add Assignment</a>
                         <div class="row">
                             <div class="col">
-                                <a href="/assignment/create" class="btn btn-info mb-2">Add Assignment</a>
                                 <?php if (session()->getFlashdata('pesan')) : ?>
 
                                     <div class="alert alert-success" role="alert">
@@ -190,8 +190,9 @@
                                         <tr>
                                             <th scope="col" class="text-light">No</th>
                                             <th scope="col" class="text-light">Task</th>
-                                            <th scope="col" class="text-light">Due-date</th>
-                                            <th scope="col" class="text-light">Task</th>
+                                            <th scope="col" class="text-light">Course Id</th>
+                                            <th scope="col" class="text-light">Due-Date</th>
+                                            <th scope="col" class="text-light">Detail</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -200,8 +201,9 @@
                                             <tr>
                                                 <th class="text-dark" scope="row"><?= $i++; ?></th>
                                                 <td class="text-dark"><?= $a['task_name']; ?></td>
+                                                <td class="text-dark"><?= $a['id']; ?></td>
                                                 <td class="text-dark"><?= $a['due_date']; ?></td>
-                                                <td> <a href="/task/<?= $a['slug']; ?>/<?= $a['assignment_id']; ?>/<?= $a['id']; ?>" class="btn btn-secondary">Go</a> </td>
+                                                <td> <a href="/task/<?= $a['assignment_id']; ?>/<?= $a['id']; ?>" class="btn btn-secondary">Go</a> </td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>

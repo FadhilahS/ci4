@@ -171,16 +171,17 @@
                         <h1 class="h3 mb-0 text-gray-800  detail text-capitalize"><?= $title; ?></h1>
                     </div>
 
-                    <form action="/course/update/<?= $Course['id']; ?>" <?= $Course['id']; ?> method="POST" enctype="multipart/form-data">
+                    <form action="/course/update/<?= $Course['id']; ?>" method="POST" enctype="multipart/form-data">
                         <?= csrf_field(); ?>
-                        <input type="hidden" name="slug" value="<?= $Course['slug']; ?>">
+                        <input type="hidden" name="id" value="<?= $Course['id']; ?>">
+                        <input type="hidden" name="$courseLama" value="<?= $Course['course_name']; ?>">
                         <input type="hidden" name="sampulLama" value="<?= $Course['sampul']; ?>">
                         <div class="row text-capitalize row-input">
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="course_name" class="form-label  ">Course Name</label>
                                     <input type="text" class="form-control <?= ($validation->hasError('course_name')) ?
-                                                                                'is-invalid' : ''; ?>" id="course_name" name="course_name" autofocus value="<?= old('course_name'); ?>">
+                                                                                'is-invalid' : ''; ?>" id="course_name" name="course_name" autofocus value="<?= (old('course_name')) ? old('course_name') : $Course['course_name'] ?>">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('course_name'); ?>
                                     </div>
@@ -189,13 +190,13 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="trainer_name" class="form-label  ">Mentor Name</label>
-                                    <input type="text" class="form-control" id="trainer_name" name="trainer_name" value="<?= old('trainer_name'); ?>">
+                                    <input type="text" class="form-control" id="trainer_name" name="trainer_name" value="<?= (old('trainer_name')) ? old('trainer_name') : $Course['trainer_name'] ?>">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="description" class="form-label">description</label>
-                                    <textarea class="form-control" id="description" name="description" rows="3" value="<?= old('description'); ?>"></textarea>
+                                    <textarea class="form-control" id="description" name="description" rows="3" value="<?= (old('description')) ? old('description') : $Course['description'] ?>"></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">

@@ -24,21 +24,23 @@ class Assignment extends BaseController
         return view('assignment/list', $data);
     }
 
-    public function assign($slug, $assignment_id, $id)
+    public function assign($assignment_id, $id)
     {
         $data = [
             'title' => 'Assignment Task',
-            'Assignment' => $this->AssignmentModel->getAssignment($slug, $assignment_id, $id)
+            'Assignment' => $this->AssignmentModel->getAssignment($assignment_id, $id)
         ];
 
         //jika komik tidak ada
 
+
         if (empty($data['Assignment'])) {
-            throw new \codeIgniter\Exceptions\PageNotFoundException('task_name assignment' . $slug . 'Tidak ditemukan');
+            throw new \codeIgniter\Exceptions\PageNotFoundException('task_name Assignment' . $assignment_id . 'Tidak ditemukan.');
         }
 
         return view('assignment/assign', $data);
     }
+
 
     public function detail()
     {
@@ -80,16 +82,13 @@ class Assignment extends BaseController
             ]
 
         ])) {
-            $validation = \Config\Services::validation();
-            return redirect()->to('/assignment/create')->withInput()->with('validation', $validation);
+            return redirect()->to('/assignment/create')->withInput();
         }
 
 
 
-        $slug =  url_title($this->request->getVar('task_name'), '-', true);
         $this->AssignmentModel->save([
             'task_name' => $this->request->getVar('task_name'),
-            'slug' => $slug,
             'description' => $this->request->getVar('description'),
             'id' => $this->request->getVar('id'),
             'point' => $this->request->getVar('point'),
@@ -101,31 +100,32 @@ class Assignment extends BaseController
         return redirect()->to('/assignment/list');
     }
 
-    public function delete($id)
+    public function delete($assignment_id)
     {
-        $this->AssignmentModel->delete($id);
+        $this->AssignmentModel->delete($assignment_id);
         session()->setFlashdata('pesan', 'data berhasil dihapus.');
         return redirect()->to('/assignment/list');
     }
 
 
-    public function edit($slug, $assignment_id, $id)
+
+    public function edit($assignment_id, $id)
     {
         $data = [
             'title' => 'Edit Task',
             'validation' => \Config\Services::validation(),
-            'Assignment' => $this->AssignmentModel->getAssignment($slug, $assignment_id, $id)
+            'Assignment' => $this->AssignmentModel->getAssignment($assignment_id, $id)
 
         ];
 
 
         return view('assignment/edit', $data);
     }
-    public function update($slug)
+    public function update($assignment_id)
     {
         // cek judul
 
-        $taskLama = $this->AssignmentModel->getAssignment($this->request->getVar('slug'));
+        $taskLama = $this->AssignmentModel->getAssignment($this->request->getVar('assignment_id'));
         if ($taskLama['task_name'] == $this->request->getVar('task_name')) {
             $rule_name = 'required';
         } else {
@@ -144,12 +144,10 @@ class Assignment extends BaseController
         ])) {
             $validation = \Config\Services::validation();
             // return redirect()->to('/Comics/create')->withInput()->with('validation', $validation);
-            return redirect()->to('/assignment/edit' . $this->request->getVar('slug'))->withInput()->with('validation', $validation);
+            return redirect()->to('/assignment/edit' . $this->request->getVar('assignment_id'))->withInput()->with('validation', $validation);
         }
-        $slug =  url_title($this->request->getVar('task_name'), '-', true);
         $this->AssignmentModel->save([
-            'slug' => $slug,
-            'assignment_id' => $this->request->getVar('assignment_id'),
+            'assignment_id' => $assignment_id,
             'task_name' => $this->request->getVar('task_name'),
             'description' => $this->request->getVar('description'),
             'id' => $this->request->getVar('id'),

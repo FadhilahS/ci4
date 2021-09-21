@@ -202,12 +202,15 @@
                                 <p><?= $Assignment['description']; ?></p>
                             </div>
                         </div>
+
                         <div class="s-item due-date">
                             <div class="d-item d-status">
                                 <p>due date</p>
                             </div>
                             <div class="d-item d-desc">
-                                <p><?= $Assignment['due_date']; ?></p>
+                                <div class="alert alert-success" role="alert">
+                                    <p><?= $Assignment['due_date']; ?></p>
+                                </div>
                             </div>
                         </div>
                         <div class="s-item point">
@@ -223,24 +226,22 @@
 
                         <h4 class="text-capitalize mt-4 submision-status">submit your task</h4>
                         <div class="input-file">
-                            <form action="post">
+                            <form action="/assignment/submit/<?= $Assignment['assignment_id']; ?>" method="POST" enctype="multipart/form-data">
                                 <input type="file" name="task" id="task">
+                                <button class="btn btn-info text-capitalize d-inline" type="submit">submit</button>
                             </form>
                         </div>
 
-                        <a href="" class="submit">
-                            <button class="btn btn-info text-capitalize button-sub" type="submit">submit</button>
-                        </a>
 
                         <!-- akhir code input kirim tugas -->
-                        <a href="/task/edit/<?= $Assignment['slug']; ?>/<?= $Assignment['assignment_id']; ?>/<?= $Assignment['id']; ?>" class="edit">
-                            <button class="btn btn-warning text-capitalize button-edit">edit</button>
+                        <a href="/assignment/edit/<?= $Assignment['assignment_id']; ?>/<?= $Assignment['id']; ?>" class="edit">
+                            <button class="btn btn-warning text-capitalize d-inline">edit</button>
                         </a>
                     </div>
-                    <form action="/list/<?= $Assignment['id']; ?>" method="POST" class="d-inline">
+                    <form action="/assignment/list/<?= $Assignment['assignment_id']; ?>" method="POST" class="d-inline">
                         <?= csrf_field(); ?>
                         <input type="hidden" name="_method" value="DELETE">
-                        <button type="submit" class="btn btn-danger" onclick="return confirm('apakah anda yakin?');">Delete</button>
+                        <button type="submit" class="btn btn-danger d-inline" onclick="return confirm('apakah anda yakin?');">Delete</button>
                     </form>
 
                     <!-- akhir code submision status -->

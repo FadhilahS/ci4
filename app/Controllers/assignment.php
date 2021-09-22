@@ -97,14 +97,14 @@ class Assignment extends BaseController
 
         session()->setFlashdata('pesan', 'data berhasil ditambahkan.');
 
-        return redirect()->to('/assignment/list');
+        return redirect()->to('/assign/' . $this->request->getVar('id'))->withInput();
     }
 
     public function delete($assignment_id)
     {
         $this->AssignmentModel->delete($assignment_id);
         session()->setFlashdata('pesan', 'data berhasil dihapus.');
-        return redirect()->to('/assignment/list');
+        return redirect()->to('/course');
     }
 
 
@@ -158,6 +158,6 @@ class Assignment extends BaseController
 
         session()->setFlashdata('pesan', 'data berhasil diubah.');
 
-        return redirect()->to('/assignment/list');
+        return redirect()->to('/assign/' . $this->request->getVar('id'))->withInput();
     }
 }

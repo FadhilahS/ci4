@@ -234,11 +234,11 @@
 
 
                         <!-- akhir code input kirim tugas -->
-                        <a href="/assignment/edit/<?= $Assignment['assignment_id']; ?>/<?= $Assignment['id']; ?>" class="edit">
+                        <a href="/assign/<?= $Assignment['assignment_id']; ?>/<?= $Assignment['id']; ?>" class="edit">
                             <button class="btn btn-warning text-capitalize d-inline">edit</button>
                         </a>
                     </div>
-                    <form action="/assignment/list/<?= $Assignment['assignment_id']; ?>" method="POST" class="d-inline">
+                    <form action="/assign/<?= $Assignment['assignment_id']; ?>" method="POST" class="d-inline">
                         <?= csrf_field(); ?>
                         <input type="hidden" name="_method" value="DELETE">
                         <button type="submit" class="btn btn-danger d-inline" onclick="return confirm('apakah anda yakin?');">Delete</button>

@@ -208,7 +208,6 @@
 
                                 </div>
                             </div>
-                            <a href="/assignment/list" class="btn btn-warning">List</a>
                             <a href="/course/edit/<?= $Course['id']; ?>" class="btn btn-success">Edit</a>
                             <form action="/course/<?= $Course['id']; ?>" method="POST" class="d-inline">
                                 <?= csrf_field(); ?>
@@ -221,9 +220,60 @@
                     <!-- akhir jumbotron heading -->
 
                 </div>
+                <br><br>
                 <!-- /.container-fluid -->
-                <hr>
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+
+                    <!-- Content Row list courses card -->
+                    <div class="container c-fluid">
+                        <h2 class="h-courses mb-3">
+                            <?= $title2; ?>
+                        </h2>
+                        <a href="/assignment/create" class="btn btn-info mb-2">Add Assignment</a>
+                        <div class="row">
+                            <div class="col">
+                                <?php if (session()->getFlashdata('pesan')) : ?>
+
+                                    <div class="alert alert-success" role="alert">
+                                        <?= session()->getFlashdata('pesan'); ?>
+                                    </div>
+
+                                <?php endif; ?>
+                                <table class="table table-bordered">
+                                    <thead class="bg-primary">
+                                        <tr>
+                                            <th scope="col" class="text-light">No</th>
+                                            <th scope="col" class="text-light">Task</th>
+                                            <th scope="col" class="text-light">Course Id</th>
+                                            <th scope="col" class="text-light">Due-Date</th>
+                                            <th scope="col" class="text-light">Detail</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $i = 1; ?>
+                                        <?php foreach ($Assignment as $a) : ?>
+                                            <tr>
+                                                <th class="text-dark" scope="row"><?= $i++; ?></th>
+                                                <td class="text-dark"><?= $a['task_name']; ?></td>
+                                                <td class="text-dark"><?= $a['id']; ?></td>
+                                                <td class="text-dark"><?= $a['due_date']; ?></td>
+                                                <td> <a href="/task/<?= $a['assignment_id']; ?>/<?= $a['id']; ?>" class="btn btn-secondary">Go</a> </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
                 <!-- Content Row list courses card -->
+
 
                 <!-- akhir code jumbotron -->
             </div>

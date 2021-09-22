@@ -18,4 +18,11 @@ class CourseModel extends Model
             return $this->where(['id' => $id])->first();
         }
     }
+    public function getAssignment($id)
+    {
+        return $this->db->table('Course')
+            ->join('Assignment', 'Assignment.id=Course.id')
+            ->where(['Course.id' => $id])
+            ->get()->getResultArray();
+    }
 }

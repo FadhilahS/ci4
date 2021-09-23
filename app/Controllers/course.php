@@ -44,7 +44,7 @@ class course extends BaseController
     {
         $data = [
             'title' => 'Detail Course',
-            'title2' => 'List Course',
+            'title2' => 'List Assignments',
             'Course' => $this->CourseModel->getCourse($id),
             'Assignment' => $this->CourseModel->getAssignment($id)
 
